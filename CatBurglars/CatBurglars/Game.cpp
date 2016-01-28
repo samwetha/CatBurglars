@@ -1,16 +1,23 @@
 #include "Game.h"
 #include "TextureHandler.h"
+#include "Level.h"
+#include "LevelManager.h"
 
 static sf::RenderWindow *window;
 static TextureHandler textures;
 
+LevelManager levelM;
 Game::Game() :
 mEntities(),
 mCat(),
 mController()
 {
+	//Test for loading in maps
+	Level testLevel = Level("test");
+	levelM.addLevel(testLevel);
+
 	//Creates the main window
-	window = new sf::RenderWindow(sf::VideoMode(1000, 800), "CatBurglars");
+	window = new sf::RenderWindow(sf::VideoMode(1024, 720), "CatBurglars");
 	window->setVerticalSyncEnabled(true);
 	textures.Initialize();
 
@@ -29,6 +36,7 @@ Game::~Game()
 }
 
 void Game::Run(){
+
 	while (window->isOpen())
 	{
 		sf::Event event;
@@ -46,8 +54,8 @@ void Game::Update(){
 
 	for each (Cat *cat in mEntities)
 	{
-		cout << "X : " << cat->GetPosition().x << endl;
-		cout << "Y : " << cat->GetPosition().y << endl << endl;;
+		//cout << "X : " << cat->GetPosition().x << endl;
+		//cout << "Y : " << cat->GetPosition().y << endl << endl;;
 		//Enable keyboard for cat
 		mController.move(cat);
 	}
@@ -60,7 +68,7 @@ void Game::Render()
 	window->clear(sf::Color(0, 200, 0, 255));*/
 
 	window->clear();
-
+	levelM.render(window);
 	//Render all entities into the window
 	for each(Entity *entity in mEntities)
 	{

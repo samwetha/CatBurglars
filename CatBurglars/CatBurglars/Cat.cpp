@@ -16,7 +16,6 @@ Cat::~Cat(){
 //Render sprite on screen
 void Cat::Render(sf::RenderWindow *mainWindow){
 	mainWindow->draw(mSprite);
-	std::cout << "asd"<<std::endl;
 }
 
 void Cat::Update(){
