@@ -7,6 +7,8 @@ Resources/
 #Visual Studio files
 
 *.sdf
+*.suo
+*.opensdf
 
 # Windows image file caches
 Thumbs.db
