@@ -4,6 +4,9 @@ Release/
 #Ignore Resources directory
 Resources/
 
+#Visual Studio files
+
+*.sdf
 
 # Windows image file caches
 Thumbs.db
