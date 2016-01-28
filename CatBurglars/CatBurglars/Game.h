@@ -8,6 +8,11 @@
 #include "GameObject.h"
 #include "Cat.h"
 #include "Controller.h"
+#include "TextureHandler.h"
+#include "Level.h"
+#include "LevelManager.h"
+#include "Channel.h"
+#include "Channels.h"
 
 class Game
 {

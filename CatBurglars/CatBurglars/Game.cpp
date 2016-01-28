@@ -1,12 +1,11 @@
 #include "Game.h"
-#include "TextureHandler.h"
-#include "Level.h"
-#include "LevelManager.h"
+
 
 static sf::RenderWindow *window;
 static TextureHandler textures;
 
 LevelManager levelM;
+
 Game::Game() :
 mEntities(),
 mCat(),
@@ -15,6 +14,14 @@ mController()
 	//Test for loading in maps
 	Level testLevel = Level("test");
 	levelM.addLevel(testLevel);
+
+	//Test för channel
+	Channel c1 = Channel(1);
+	Channel c2 = Channel(2);
+	Channels::addChannel(c1);
+	Channels::addChannel(c2);
+
+	Channels::setActive(1, false, 10);
 
 	//Creates the main window
 	window = new sf::RenderWindow(sf::VideoMode(1024, 720), "CatBurglars");
@@ -45,6 +52,21 @@ void Game::Run(){
 			if (event.type == sf::Event::Closed)
 				window->close();
 		}
+
+		//Test för Channel
+		// Uppdaterar timers för alla kanaler
+		Channels::update();
+
+		// Kollar om en kanal är aktiv.
+		if (Channels::isChannelActive(1)) {
+
+			// Gör saker sålänge den är aktiv
+			cout << "active" << endl;
+		}
+		else {
+			cout << "deactive" << endl;
+		}
+
 		Update();
 		Render();
 	}
