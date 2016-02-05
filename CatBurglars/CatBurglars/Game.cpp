@@ -11,6 +11,8 @@ mEntities(),
 mCat(),
 mController()
 {
+
+
 	//Test for loading in maps
 	Level testLevel = Level("test");
 	levelM.addLevel(testLevel);
@@ -66,6 +68,8 @@ void Game::Run(){
 		else {
 			cout << "deactive" << endl;
 		}
+
+
 
 		Update();
 		Render();
